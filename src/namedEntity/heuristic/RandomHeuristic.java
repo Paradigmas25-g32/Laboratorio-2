@@ -35,7 +35,17 @@ public class RandomHeuristic extends Heuristic {
 
 	
 	public static void main(String[] args){
-//		RandomHeuristic rh = new RandomHeuristic();
+		RandomHeuristic rh = new RandomHeuristic();
+
+		String[] testWords = {"Milei", "Motorola", "the", "Hello", "IBM", "AIX", "Cloud", "Itil", "a"};
+	
+		for (String word : testWords) {
+			System.out.println("Es entidad \"" + word + "\"? -->" + rh.isEntity(word));
+		}
+		System.out.println("\nConsistencia:");
+		for (String word : testWords) {
+			System.out.println("Es entidad \"" + word + "\"? -->" + rh.isEntity(word));
+		}
 	}
 	
 }
