@@ -1,5 +1,11 @@
 package httpRequest;
 
+import java.net.URL;
+import java.net.HttpURLConnection;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.lang.StringBuffer;
+import java.io.IOException;
 
 /* Esta clase se encarga de realizar efectivamente el pedido de feed al servidor de noticias
  * Leer sobre como hacer una http request en java
