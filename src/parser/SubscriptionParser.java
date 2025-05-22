@@ -1,6 +1,5 @@
 package parser;
 
-
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,28 +22,25 @@ public class SubscriptionParser extends GeneralParser {
 		try {
 			//Obtener el contenido del json
 			String jsonString = new String(Files.readAllBytes(Paths.get(source)));
-					
 			//Crear una nueva suscripción
 			Subscription subscription = new Subscription(source);
 			
-			//Crear un objeto JSON a partir del contenido
-			JSONObject jsonObject = new JSONObject(jsonString);
-			//parsear el contenido
-			JSONArray subscriptionsArray = jsonObject.getJSONArray("subscriptions");
-			
+			// //Crear un objeto JSON a partir del contenido	
+			JSONArray subscriptionsArray = new JSONArray(jsonString);
+
 			//Recorrer el array de suscripciones
 			for (int i = 0; i < subscriptionsArray.length(); i++) {
 				JSONObject subObj = subscriptionsArray.getJSONObject(i); 
 				
 				//Extraer los campos necesarios
 				String objUrl = subObj.getString("url");
-				String objUrlType = subObj.getString("type");
+				String objUrlType = subObj.getString("urlType");
 				
 				//Crear un nuevo SinlgeSubscription
 				SingleSubscription singleSubs = new SingleSubscription(objUrl, null, objUrlType);
 				
 				//Añadir todos los parámetros
-				JSONArray paramsArray = subObj.getJSONArray("params");
+				JSONArray paramsArray = subObj.getJSONArray("urlParams");
 				for (int j = 0; j < paramsArray.length(); j++) {
 					singleSubs.setUlrParams(paramsArray.getString(j));
 				}
