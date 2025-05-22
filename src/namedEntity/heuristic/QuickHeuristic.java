@@ -31,16 +31,25 @@ public class QuickHeuristic extends Heuristic{
 	
 	
 	public boolean isEntity(String word) {
-		return word.length() > 1 && word.substring(0, 1).compareTo(word.substring(0, 1).toUpperCase()) == 0 && !keyWords.contains(word.toLowerCase());
+		if (word == null || word.length() < 2) return false;
+
+		if (this.getCategory(word) != null) return true;
+
+		return Character.isUpperCase(word.charAt(0)) && !keyWords.contains(word.toLowerCase());
 	}
-	
 	
 	public static void main(String[] args) {
-//		QuickHeuristic qh = new QuickHeuristic();
+		QuickHeuristic qh = new QuickHeuristic();
+	
+		String[] testWords = {
+			"Milei", "Motorola", "the", "Hello", "IBM", "AIX", "Cloud", "Itil", "a"
+		};
+	
+		for (String word : testWords) {
+			System.out.println("Es entidad \"" + word + "\"? --> " + qh.isEntity(word));
+		}
 	}
 
-	
-	
 
 }
 
