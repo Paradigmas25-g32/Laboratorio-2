@@ -41,8 +41,7 @@ public class RssParser extends GeneralParser {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			
 			//Parseo el documento
-			Document document = db.parse(source);
-			document.getDocumentElement().normalize();
+			Document document = db.parse(new InputSource(new StringReader(source)));
 			
 			// Obtener el nombre del sitio
 			String siteName = getSiteName(document);
@@ -50,7 +49,7 @@ public class RssParser extends GeneralParser {
 			feed = new Feed(siteName);
 		
 			// Obtener todos los items (artículos) del feed
-			NodeList itemList = ((Document) db).getElementsByTagName("item");
+			NodeList itemList = Document.getElementsByTagName("item");
 			
 			// Iterar sobre cada item y extraer la información
 			for (int i = 0; i < itemList.getLength(); i++) {
