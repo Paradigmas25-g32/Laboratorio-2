@@ -57,6 +57,10 @@ public class Article {
 	public void setLink(String link) {
 		this.link = link;
 	}
+
+	public List<NamedEntity> getNamedEntitiesList(){
+		return this.namedEntityList;
+	}
 	
 	@Override
 	public String toString() {
