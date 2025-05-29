@@ -1,20 +1,18 @@
-import httpRequest.httpRequester;
-import parser.SubscriptionParser;
-import parser.RssParser;
+import httpRequest.*;
+import parser.*;
 import subscription.*;
-import namedEntity.*;
-import namedEntity.heuristic.QuickHeuristic;
+import namedEntity.NamedEntity;
+import namedEntity.heuristic.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
-
-import feed.Article;
-import feed.Feed;
-
+import feed.*;
 public class FeedReaderMain {
+
+	private static final String DEFAULT_SUBSCRIPTION_FILE = "../config/subscriptions.json";
 
 	private static void printHelp(){
 		System.out.println("Please, call this program in correct way: FeedReader [-ne]");
@@ -63,7 +61,7 @@ public class FeedReaderMain {
 				SingleSubscription singleSub = readSubscriptionFile(DEFAULT_SUBSCRIPTION_FILE);
 				httpRequester FeedRssXml = new httpRequester();
 				String rssParser = FeedRssXml.getFeedRss(singleSub.getFeedToRequest(0));
-				
+				//RssParser feedParser = (RssParser) new RssParser().parser(rssParser);
 				Feed feed = null;
 				try {
 					feed = (Feed) new RssParser().parser(rssParser);

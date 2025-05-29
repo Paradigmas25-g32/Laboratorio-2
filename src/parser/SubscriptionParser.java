@@ -25,7 +25,11 @@ public class SubscriptionParser extends GeneralParser {
 			//Crear una nueva suscripción
 			Subscription subscription = new Subscription(source);
 			
-			// //Crear un objeto JSON a partir del contenido	
+			// //Crear un objeto JSON a partir del contenido
+			
+			// //parsear el contenido
+			
+			
 			JSONArray subscriptionsArray = new JSONArray(jsonString);
 
 			//Recorrer el array de suscripciones
